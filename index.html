@@ -1,4 +1,4 @@
-lo<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -18,6 +18,68 @@ lo<!DOCTYPE html>
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<style>
+  .countdown-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    font-family: 'Arial', sans-serif;
+    font-weight: 600;
+    font-size: 1.5em;
+    margin-bottom: 50px;
+  }
+
+  .time-box {
+    background: #f26b38;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    text-align: center;
+    min-width: 70px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  .time-box span {
+    display: block;
+    font-size: 1.2em;
+    margin-top: 5px;
+    font-weight: bold;
+  }
+</style>
+
+<div class="countdown-container" id="countdown">
+  <div class="time-box">
+    <div id="days">00</div>
+    <span>Días</span>
+  </div>
+  <div class="time-box">
+    <div id="hours">00</div>
+    <span>Horas</span>
+  </div>
+  <div class="time-box">
+    <div id="minutes">00</div>
+    <span>Min</span>
+  </div>
+  <div class="time-box">
+    <div id="seconds">00</div>
+    <span>Seg</span>
+  </div>
+</div>
+
+<script>
+  const countdown = () => {
+    const targetDate = new Date("2025-05-27T23:59:00-05:00"); // Hora de Perú (UTC-5)
+    const now = new Date();
+    const diff = targetDate - now;
+
+    if (diff <= 0) {
+      document.getElementById("countdown").innerHTML = "<strong>¡Desbloqueado!</strong>";
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 *
+	
 	<br> <br> <br> <br> <br>
 	<div id="card">
 		<div id="card-inside">
