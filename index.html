@@ -16,6 +16,41 @@
 	<link rel="shortcut icon" href="icon/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" href="css/style.css">
+	<style>
+  #countdown-box {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 2rem;
+    color: #fff;
+    background-color: #F26B38;
+    padding: 20px;
+    border-radius: 20px;
+    width: fit-content;
+    margin: 50px auto;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    z-index: 9999;
+  }
+
+  .countdown-segment {
+    display: inline-block;
+    margin: 0 10px;
+  }
+
+  .countdown-number {
+    font-weight: bold;
+    font-size: 2.5rem;
+  }
+
+  .countdown-label {
+    display: block;
+    font-size: 1rem;
+  }
+
+  #card {
+    display: none;
+  }
+</style>
+
 </head>
 <body>
 	<br> <br> <br> <br> <br>
@@ -76,6 +111,56 @@
 		</div>
 	</div>
 	<script  src="js/index.js"></script>
+	<div id="countdown-box">
+  <div class="countdown-segment">
+    <span class="countdown-number" id="days">--</span>
+    <span class="countdown-label">Days</span>
+  </div>
+  <div class="countdown-segment">
+    <span class="countdown-number" id="hours">--</span>
+    <span class="countdown-label">Hours</span>
+  </div>
+  <div class="countdown-segment">
+    <span class="countdown-number" id="minutes">--</span>
+    <span class="countdown-label">Minutes</span>
+  </div>
+  <div class="countdown-segment">
+    <span class="countdown-number" id="seconds">--</span>
+    <span class="countdown-label">Seconds</span>
+  </div>
+</div>
+
+<script>
+  const targetDate = new Date("May 27, 2025 23:59:00").getTime();
+  const countdownBox = document.getElementById("countdown-box");
+  const card = document.getElementById("card");
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+
+    if (distance <= 0) {
+      clearInterval(interval);
+      countdownBox.style.display = "none";
+      card.style.display = "block";
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("days").textContent = days;
+    document.getElementById("hours").textContent = hours;
+    document.getElementById("minutes").textContent = minutes;
+    document.getElementById("seconds").textContent = seconds;
+  }
+
+  updateCountdown(); // Run initially
+  const interval = setInterval(updateCountdown, 1000);
+</script>
+
 </body>
 </html>
 <p>
@@ -125,7 +210,6 @@
         transition: all 0.5s ease;
     }
 </style>
-
 <!-- Script del Botón -->
 <script>
     const playButton = document.getElementById("playMusicBtn");
@@ -152,4 +236,4 @@
             </p>
         </p>
     </p>
-</p>
+	</p>
