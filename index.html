@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,116 +18,80 @@
 	<link rel="icon" href="favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" href="css/style.css">
 </head>
-<body>
 <style>
-  .countdown-container {
+  #countdown-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    color: white;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    gap: 10px;
-    font-family: sans-serif;
-    font-weight: 600;
-    font-size: 24px;
-    margin-top: 30px;
+    z-index: 9999;
+    font-family: Arial, sans-serif;
   }
 
   .countdown-box {
-    background-color: #f0f0f0;
-    padding: 15px 20px;
-    border-radius: 10px;
+    background: #222;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px #ff5722;
     text-align: center;
-    min-width: 70px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   }
 
-  .countdown-box span {
-    display: block;
-    font-size: 30px;
-    font-weight: 600;
-    color: #333;
+  .countdown-box h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
   }
 
-  #unlock-btn {
+  .countdown-time {
+    font-size: 28px;
+    letter-spacing: 2px;
+  }
+
+  #unlock-button {
     display: none;
-    margin: 20px auto 0;
-    padding: 10px 25px;
-    font-size: 18px;
-    font-weight: bold;
-    background-color: #F26B38;
-    color: white;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #ff5722;
     border: none;
     border-radius: 8px;
+    color: white;
+    font-size: 18px;
     cursor: pointer;
   }
 </style>
-
-<div id="countdown" class="countdown-container">
-  <div class="countdown-box"><span id="days">00</span>Días</div>
-  <div class="countdown-box"><span id="hours">00</span>Horas</div>
-  <div class="countdown-box"><span id="minutes">00</span>Min</div>
-  <div class="countdown-box"><span id="seconds">00</span>Seg</div>
+<div id="countdown-container">
+    <h1>Waiting</h1>
+  <div class="countdown-box">
+    <div class="countdown-time" id="countdown"></div>
+    <button id="unlock-button">unlock</button>
+  </div>
 </div>
-<button id="unlock-btn">Unlock</button>
-
-<script>
-  const countdown = () => {
-    const endDate = new Date("2025-05-26T23:59:00-05:00").getTime(); // Perú Time (UTC-5)
-    const now = new Date().getTime();
-    const timeLeft = endDate - now;
-
-    if (timeLeft <= 0) {
-      document.getElementById("countdown").style.display = "none";
-      document.getElementById("unlock-btn").style.display = "block";
-      clearInterval(timer);
-      return;
-    }
-
-    const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((timeLeft / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((timeLeft / (1000 * 60)) % 60);
-    const seconds = Math.floor((timeLeft / 1000) % 60);
-
-    document.getElementById("days").innerText = String(days).padStart(2, '0');
-    document.getElementById("hours").innerText = String(hours).padStart(2, '0');
-    document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
-    document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
-  };
-
-  const timer = setInterval(countdown, 1000);
-  countdown();
-</script>
-<script>
-  const countdown = () => {
-    const targetDate = new Date("2025-05-26T23:59:00-05:00"); // Hora de Perú (UTC-5)
-    const now = new Date();
-    const diff = targetDate - now;
-
-    if (diff <= 0) {
-      document.getElementById("countdown").innerHTML = "<strong>¡Desbloqueado!</strong>";
-      return;
-    }
-
-    const days = Math.floor(diff / (1000 * 60 *
-	
-	<br> <br> <br> <br> <br>
+<body>
 	<div id="card">
 		<div id="card-inside">
 			<div class="wrap">
 				<center><p class="animated infinite wobble"><b><u>Happy birthday <3 </b></u></p><center>
 				<p> Happy birthday, I hope you have a great time with your family, I am sorry for stopping writing to you. I really fell in love with you, I think I do things well by walking away, but this time I express my sincere feelings towards you, I will always be here, do you feel the same? &nbsp;<i class="em-svg em-blush"></i></p>
 				<p> 
-				 </p><p class="signed"><u>Made With</b><b> <i class="em-svg em-heart"></i></p>
+				 </p><p class="signed"><u>Made With ♥️</b><b> <i class="em-svg em-heart"></i></p>
 			</div>
 		</div>
 		<div id="card-front">
 			<div class="wrap">
-				<h1 class="animated infinite swing">Happy Birthday To You</h1>
+				<h1 class="animated infinite swing">Happy Birthday</h1>
 				<div class="cake_and_velas">
 					<div class="velas">
 						<div class="fuego"></div>
-						<div class="">fuego</div>
-						<div class="">fuego</div>
-						<div class="">fuego</div>
-						<div class="">fuego</div>
+						<div class="fuego"></div>
+						<div class="fuego"></div>
+						<div class="fuego"></div>
+						<div class="fuego"></div>
 					</div>
 				        <svg id="cake" version="1.1" x="0px" y="0px" width="290px" height="500px" viewBox="0 0 200 500" enable-background="new 0 0 200 500" xml:space="preserve">
 						<path fill="#a88679" d="M173.667-13.94H26.333c-3.999 0-4-16.002 0-16.002h147.334c4 0 4.001 16.002 0 16.002z">
@@ -236,3 +201,44 @@
         </p>
     </p>
 </p>
+<script>
+  const endTime = new Date("May 27, 2025 23:58:00 GMT-0500").getTime(); // Hora Perú
+  const countdownEl = document.getElementById("countdown");
+  const unlockBtn = document.getElementById("unlock-button");
+  const container = document.getElementById("countdown-container");
+  const card = document.getElementById("card");
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = endTime - now;
+
+    if (distance <= 0) {
+      countdownEl.innerHTML = "Waaaaait! Think carefully before you unlock it.";
+      unlockBtn.style.display = "block";
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    countdownEl.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+  }
+
+  unlockBtn.addEventListener("click", () => {
+    container.style.display = "none";
+    card.style.display = "block";
+  });
+
+  // Inicialmente oculta el contenido de la tarjeta
+  card.style.display = "none";
+  updateCountdown();
+  const timer = setInterval(() => {
+    updateCountdown();
+    if (new Date().getTime() >= endTime) {
+      clearInterval(timer);
+    }
+  }, 1000);
+	</script>
+	
