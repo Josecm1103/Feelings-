@@ -128,7 +128,134 @@
 			</div>
 		</div>
 	</div>
-	<script  src="js/index.js"></script>
+<style>
+  #password-container {
+    position: fixed;
+    inset: 0;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    font-family: sans-serif;
+  }
+
+  #password-container h2 {
+    margin-bottom: 5px;
+    font-size: 24px;
+  }
+
+  #password-container p {
+    margin: 0 0 15px;
+    font-size: 14px;
+    color: #555;
+  }
+
+  .digit-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .digit-box input.digit {
+    width: 40px;
+    height: 50px;
+    font-size: 24px;
+    text-align: center;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+
+  .digit-box input.digit:focus {
+    border-color: #333;
+  }
+
+  .separator {
+    font-size: 28px;
+    font-weight: bold;
+    color: #666;
+  }
+
+  #submit-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    background-color: #333;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  #submit-btn:hover {
+    background-color: #555;
+  }
+
+  #error-message {
+    color: red;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+</style>
+
+<div id="password-container">
+  <h2>Enter your birthday</h2>
+  <p>Day and month</p>
+  <p>0s also count hehe</p>
+  <div class="digit-box">
+    <input type="text" maxlength="1" class="digit" id="d1" />
+    <input type="text" maxlength="1" class="digit" id="d2" />
+    <span class="separator">/</span>
+    <input type="text" maxlength="1" class="digit" id="m1" />
+    <input type="text" maxlength="1" class="digit" id="m2" />
+  </div>
+  <button id="submit-btn" onclick="checkPassword()">Try ♥️</button>
+  <p id="error-message"></p>
+</div>
+
+<script>
+  function checkPassword() {
+    const d1 = document.getElementById("d1").value;
+    const d2 = document.getElementById("d2").value;
+    const m1 = document.getElementById("m1").value;
+    const m2 = document.getElementById("m2").value;
+
+    const input = d1 + d2 + m1 + m2;
+    const correctPassword = "2805";
+
+    if (input === correctPassword) {
+      document.getElementById("password-container").style.display = "none";
+      document.body.style.overflow = "auto";
+    } else {
+      document.getElementById("error-message").textContent = "Password incorrect.";
+    }
+  }
+
+  // Salto automático entre inputs
+  document.querySelectorAll(".digit").forEach((input, index, inputs) => {
+    input.addEventListener("input", () => {
+      if (input.value.length === 1 && index < inputs.length - 1) {
+        inputs[index + 1].focus();
+      }
+    });
+
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Backspace" && !input.value && index > 0) {
+        inputs[index - 1].focus();
+      }
+    });
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    document.body.style.overflow = "hidden";
+    document.getElementById("d1").focus();
+  });
+</script>
+
 </body>
 </html>
 <p>
@@ -201,7 +328,7 @@
     </p>
 </p>
 <script>
-  const endTime = new Date("May 27, 2026 23:58:00 GMT-0500").getTime(); // Hora Perú
+  const endTime = new Date("May 27, 2025 23:58:00 GMT-0500").getTime(); // Hora Perú
   const countdownEl = document.getElementById("countdown");
   const unlockBtn = document.getElementById("unlock-button");
   const container = document.getElementById("countdown-container");
@@ -236,19 +363,4 @@
   const timer = setInterval(() => {
     updateCountdown();
     if (new Date().getTime() >= endTime) {
-      clearInterval(timer);
-    }
-  }, 1000);
-	</script>
-	<script>
-	alert("What are you doing hereeeeeee?");
-        alert("Do you want to know what's inside?");
-        alert("There's nothing here but stop passing these messages on.");
-        alert("Are you really still here?");
-        alert("Hey, please stop.");
-        alert("It's okay but you just have to wait for this to end, time hehe");
-        alert("It's not much but I did it with a lot of love for you.");
-        alert("Bye");
-        alert("Fixed, made on May 12, 2025")
-					 </script>
-	
+    
