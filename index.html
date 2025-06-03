@@ -18,58 +18,6 @@
 	<link rel="icon" href="favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" href="css/style.css">
 </head>
-<style>
-  #countdown-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #111;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    font-family: Arial, sans-serif;
-  }
-
-  .countdown-box {
-    background: #222;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 0 20px #ff5722;
-    text-align: center;
-  }
-
-  .countdown-box h1 {
-    margin-bottom: 20px;
-    font-size: 24px;
-  }
-
-  .countdown-time {
-    font-size: 28px;
-    letter-spacing: 2px;
-  }
-
-  #unlock-button {
-    display: none;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background: #ff5722;
-    border: none;
-    border-radius: 8px;
-    color: white;
-    font-size: 18px;
-    cursor: pointer;
-  }
-</style>
-<div id="countdown-container">
-  <div class="countdown-box">
-    <div class="countdown-time" id="countdown"></div>
-    <button id="unlock-button">unlock</button>
-  </div>
 </div>
 <body>
 	<div id="card">
@@ -213,7 +161,7 @@
     <input type="text" maxlength="1" class="digit" id="m1" />
     <input type="text" maxlength="1" class="digit" id="m2" />
   </div>
-  <button id="submit-btn" onclick="checkPassword()">Try ♥️</button>
+  <button id="submit-btn" onclick="checkPassword()">Try one more time</button>
   <p id="error-message"></p>
 </div>
 
@@ -327,40 +275,3 @@
         </p>
     </p>
 </p>
-<script>
-  const endTime = new Date("May 27, 2025 23:58:00 GMT-0500").getTime(); // Hora Perú
-  const countdownEl = document.getElementById("countdown");
-  const unlockBtn = document.getElementById("unlock-button");
-  const container = document.getElementById("countdown-container");
-  const card = document.getElementById("card");
-
-  function updateCountdown() {
-    const now = new Date().getTime();
-    const distance = endTime - now;
-
-    if (distance <= 0) {
-      countdownEl.innerHTML = "Waaaaait! Think carefully before you unlock it.";
-      unlockBtn.style.display = "block";
-      return;
-    }
-
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    countdownEl.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-  }
-
-  unlockBtn.addEventListener("click", () => {
-    container.style.display = "none";
-    card.style.display = "block";
-  });
-
-  // Inicialmente oculta el contenido de la tarjeta
-  card.style.display = "none";
-  updateCountdown();
-  const timer = setInterval(() => {
-    updateCountdown();
-    if (new Date().getTime() >= endTime) {
-    
