@@ -132,6 +132,7 @@
 	<div id="password-container" style="position: fixed; inset: 0; background: white; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 9999;">
   <h2>its the last, no more</h2>
   <p>Day/month</p>
+   <p>For example:1103</p>
   <input type="password" id="password-input" placeholder="DDMM" style="padding: 10px; font-size: 16px;" />
   <button onclick="checkPassword()" style="margin-top: 10px; padding: 10px 20px; font-size: 16px;">:3</button>
   <p id="error-message" style="color: red; margin-top: 10px;"></p>
@@ -140,13 +141,13 @@
 <script>
   function checkPassword() {
     const input = document.getElementById("password-input").value;
-    const correctPassword = "1103"; // DDMM format
+    const correctPassword = "2805"; // DDMM format
 
     if (input === correctPassword) {
       document.getElementById("password-container").style.display = "none";
       document.body.style.overflow = "auto"; // Enable scroll if needed
     } else {
-      document.getElementById("error-message").textContent = "Password incorrect.";
+      document.getElementById("error-message").textContent = "Password incorrect." , "Try Again" , "keep trying" , "the password is easy" , "Esa tampoco es" , "si llegaste hasta aqui esto no es para ti" , "pista, no empieza con 0";
     }
   }
 
