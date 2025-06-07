@@ -143,11 +143,25 @@
     const input = document.getElementById("password-input").value;
     const correctPassword = "2805"; // DDMM format
 
+    const messages = [
+      "Password incorrect.",
+      "Psst, If I were you, I would give up.", 
+      "Password incorrect.",
+      "Try again.",
+      "Keep trying.",
+      "The password is easy.",
+      "That's not it.",
+      "No.",
+      "Pista: no empieza con 0.",
+      "Sigue intentando..."
+    ];
+
     if (input === correctPassword) {
       document.getElementById("password-container").style.display = "none";
       document.body.style.overflow = "auto"; // Enable scroll if needed
     } else {
-      document.getElementById("error-message").textContent = "Password incorrect." , "Try Again" , "keep trying" , "the password is easy" , "Esa tampoco es" , "si llegaste hasta aqui esto no es para ti" , "pista, no empieza con 0";
+      const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+      document.getElementById("error-message").textContent = randomMessage;
     }
   }
 
@@ -156,6 +170,7 @@
     document.body.style.overflow = "hidden"; // Prevent scrolling before unlock
   });
 </script>
+					 
 
 </body>
 </html>
